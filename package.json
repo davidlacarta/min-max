@@ -1,0 +1,19 @@
+{
+  "name": "min-max",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/min-max.js",
+  "module": "src/index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "David Lacarta",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
+  }
+}
