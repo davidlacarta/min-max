@@ -29,12 +29,14 @@ export function minMax({
       beta,
       max: !max,
       heuristic,
-      generateNodes
+      generateNodes,
+      isTerminalNode
     });
 
-    const isCurrentBest =
-      (max && currentValue > bestValue) || (!max && currentValue < bestValue);
-    if (isCurrentBest) {
+    const isMaxAndBestMax = max && currentValue > bestValue;
+    const isMinAndBestMin = !max && currentValue < bestValue;
+
+    if (isMaxAndBestMax || isMinAndBestMin) {
       bestValue = currentValue;
       bestNode = child;
     }
@@ -45,7 +47,7 @@ export function minMax({
       beta = Math.min(beta, currentValue);
     }
 
-    const prune = beta <= alpha;
+    const prune = alpha >= beta;
     if (prune) {
       break;
     }
