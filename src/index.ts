@@ -1,3 +1,16 @@
+type Node = any;
+
+type MinMaxParameters = {
+  max?: boolean;
+  alpha?: number;
+  beta?: number;
+  depth: number;
+  node: Node;
+  heuristic: (node: Node) => number;
+  generateNodes: (node: Node) => Array<Node>;
+  isTerminalNode?: (node: Node) => boolean;
+};
+
 export function minMax({
   max = true,
   alpha = Number.NEGATIVE_INFINITY,
@@ -7,7 +20,7 @@ export function minMax({
   heuristic,
   generateNodes,
   isTerminalNode = () => false
-}) {
+}: MinMaxParameters) {
   if (depth === 0 || isTerminalNode(node)) {
     return { bestValue: heuristic(node) };
   }
