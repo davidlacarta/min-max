@@ -1,41 +1,43 @@
-type Node = any;
-
-type MinMaxParameters = {
+type MinMaxParameters<N> = {
+  depth: number;
+  node: N;
+  heuristic: (node: N) => number;
+  generateNodes: (node: N) => Array<N>;
+  isTerminalNode?: (node: N) => boolean;
   max?: boolean;
   alpha?: number;
   beta?: number;
-  depth: number;
-  node: Node;
-  heuristic: (node: Node) => number;
-  generateNodes: (node: Node) => Array<Node>;
-  isTerminalNode?: (node: Node) => boolean;
 };
 
-export function minMax({
-  max = true,
-  alpha = Number.NEGATIVE_INFINITY,
-  beta = Number.POSITIVE_INFINITY,
+type MinMaxReturn<N> = {
+  value: number;
+  node?: N;
+};
+
+function minMax<N>({
   depth,
   node,
   heuristic,
   generateNodes,
-  isTerminalNode = () => false
-}: MinMaxParameters) {
+  isTerminalNode = () => false,
+  max = true,
+  alpha = Number.NEGATIVE_INFINITY,
+  beta = Number.POSITIVE_INFINITY
+}: MinMaxParameters<N>): MinMaxReturn<N> {
   if (depth === 0 || isTerminalNode(node)) {
-    return { bestValue: heuristic(node) };
+    return { value: heuristic(node) };
   }
 
   const initBestValue = max
     ? Number.NEGATIVE_INFINITY
     : Number.POSITIVE_INFINITY;
 
-  let bestValue = initBestValue;
-  let bestNode = undefined;
+  let best = { value: initBestValue, node };
 
   const nodes = generateNodes(node);
   for (let i = 0; i < nodes.length; i++) {
     const child = nodes[i];
-    const { bestValue: currentValue } = minMax({
+    const { value: currentValue } = minMax({
       depth: depth - 1,
       node: child,
       alpha,
@@ -46,12 +48,12 @@ export function minMax({
       isTerminalNode
     });
 
-    const isMaxAndBestMax = max && currentValue > bestValue;
-    const isMinAndBestMin = !max && currentValue < bestValue;
+    const isMaxAndBestMax = max && currentValue > best.value;
+    const isMinAndBestMin = !max && currentValue < best.value;
 
     if (isMaxAndBestMax || isMinAndBestMin) {
-      bestValue = currentValue;
-      bestNode = child;
+      best.value = currentValue;
+      best.node = child;
     }
 
     if (max) {
@@ -66,5 +68,7 @@ export function minMax({
     }
   }
 
-  return { bestValue, bestNode };
+  return best;
 }
+
+export { minMax };
