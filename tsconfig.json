@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "target": "es5",
     "allowJs": true
   }

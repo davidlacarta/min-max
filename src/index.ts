@@ -2,8 +2,8 @@ type MinMaxParameters<N> = {
   depth: number;
   node: N;
   heuristic: (node: N) => number;
-  generateNodes: (node: N) => Array<N>;
-  isTerminalNode?: (node: N) => boolean;
+  generate: (node: N) => Array<N>;
+  isTerminal?: (node: N) => boolean;
   max?: boolean;
   alpha?: number;
   beta?: number;
@@ -18,13 +18,13 @@ function minMax<N>({
   depth,
   node,
   heuristic,
-  generateNodes,
-  isTerminalNode = () => false,
+  generate,
+  isTerminal = () => false,
   max = true,
   alpha = Number.NEGATIVE_INFINITY,
   beta = Number.POSITIVE_INFINITY
 }: MinMaxParameters<N>): MinMaxReturn<N> {
-  if (depth === 0 || isTerminalNode(node)) {
+  if (depth === 0 || isTerminal(node)) {
     return { value: heuristic(node) };
   }
 
@@ -34,7 +34,7 @@ function minMax<N>({
 
   let best = { value: initBestValue, node };
 
-  const nodes = generateNodes(node);
+  const nodes = generate(node);
   for (let i = 0; i < nodes.length; i++) {
     const child = nodes[i];
     const { value: currentValue } = minMax({
@@ -44,8 +44,8 @@ function minMax<N>({
       beta,
       max: !max,
       heuristic,
-      generateNodes,
-      isTerminalNode
+      generate,
+      isTerminal
     });
 
     const isMaxAndBestMax = max && currentValue > best.value;
@@ -71,4 +71,4 @@ function minMax<N>({
   return best;
 }
 
-export { minMax };
+export default minMax;
