@@ -5,9 +5,9 @@
   "main": "dist/min-max.js",
   "module": "src/index.js",
   "scripts": {
+    "start": "npm run build && node examples/index.js",
     "build": "webpack",
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine --reporter=jasmine-console-reporter --config=jasmine.json"
   },
   "keywords": [],
   "author": "David Lacarta",
@@ -15,5 +15,13 @@
   "dependencies": {
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.4.1",
+    "jasmine": "^3.5.0",
+    "jasmine-console-reporter": "^3.1.0",
+    "ts-loader": "^6.1.2",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
   }
 }
