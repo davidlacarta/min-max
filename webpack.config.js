@@ -18,7 +18,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "min-max.js",
-    library: "minMax",
+    library: "minMaxGlobal",
     libraryTarget: "umd",
     globalObject: "this"
   }

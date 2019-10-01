@@ -9,8 +9,10 @@
   <body>
     Open console...
   </body>
-  <script src="dist/min-max.js"></script>
+  <script src="../dist/min-max.js"></script>
   <script>
+    const { minMax } = minMaxGlobal;
+
     const result = minMax({
       depth: 5,
       node: 1,

@@ -5,6 +5,7 @@
   "main": "dist/min-max.js",
   "module": "src/index.js",
   "scripts": {
+    "start": "npm run build && node examples/index.js",
     "build": "webpack",
     "test": "jasmine --reporter=jasmine-console-reporter --config=jasmine.json"
   },

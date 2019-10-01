@@ -1,4 +1,4 @@
-import minMax from "../src/index";
+import { minMax } from "../src/index";
 
 type TreeNode = {
   nodes?: number;

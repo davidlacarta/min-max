@@ -71,4 +71,4 @@ function minMax<N>({
   return best;
 }
 
-export default minMax;
+export { minMax };
