@@ -14,7 +14,7 @@ type MinMaxReturn<N> = {
   node?: N;
 };
 
-function minMax<N>({
+function mm<N>({
   depth,
   node,
   heuristic,
@@ -37,7 +37,7 @@ function minMax<N>({
   const nodes = generate(node);
   for (let i = 0; i < nodes.length; i++) {
     const child = nodes[i];
-    const { value: currentValue } = minMax({
+    const { value: currentValue } = mm({
       depth: depth - 1,
       node: child,
       alpha,
@@ -71,4 +71,4 @@ function minMax<N>({
   return best;
 }
 
-export { minMax };
+export { mm };

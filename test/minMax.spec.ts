@@ -1,4 +1,4 @@
-import { minMax } from "../src/index";
+import { mm } from "../src/index";
 
 type TreeNode = {
   nodes?: number;
@@ -46,7 +46,7 @@ function hasZeroNodes(node: number) {
 
 describe("minMax", () => {
   it("tree generated", () => {
-    const result = minMax({
+    const result = mm({
       depth: 5,
       node: 1,
       heuristic: getValue,
