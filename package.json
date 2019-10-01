@@ -1,6 +1,6 @@
 {
   "name": "min-max-ai",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/min-max.js",
   "module": "src/index.js",
@@ -13,11 +13,9 @@
   "keywords": [],
   "author": "David Lacarta",
   "license": "ISC",
-  "dependencies": {
-    "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9"
-  },
   "devDependencies": {
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
     "@types/jasmine": "^3.4.1",
     "jasmine": "^3.5.0",
     "jasmine-console-reporter": "^3.1.0",
