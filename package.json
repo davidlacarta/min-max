@@ -7,7 +7,8 @@
   "scripts": {
     "start": "npm run build && node examples/index.js",
     "build": "webpack",
-    "test": "jasmine --reporter=jasmine-console-reporter --config=jasmine.json"
+    "test": "jasmine --reporter=jasmine-console-reporter --config=jasmine.json",
+    "prepublishOnly": "npm run test && npm run build"
   },
   "keywords": [],
   "author": "David Lacarta",
