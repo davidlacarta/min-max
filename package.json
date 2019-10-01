@@ -1,6 +1,6 @@
 {
   "name": "min-max-ai",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/min-max.js",
   "module": "src/index.js",
@@ -10,7 +10,19 @@
     "test": "jasmine --reporter=jasmine-console-reporter --config=jasmine.json",
     "prepublishOnly": "npm run test && npm run build"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidlacarta/min-max.git"
+  },
+  "keywords": [
+    "minmax",
+    "min",
+    "max",
+    "alpha",
+    "beta",
+    "prunning"
+  ],
+  "homepage": "https://github.com/davidlacarta/min-max#readme",
   "author": "David Lacarta",
   "license": "ISC",
   "devDependencies": {
